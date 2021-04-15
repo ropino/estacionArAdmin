@@ -6,8 +6,9 @@ import CustomDrawerContent from './Drawer/Drawer';
 import { HomeContainer } from "./HomeContainer"
 import Login from "../components/Login/Login"
 import ProfileContainer from "./ProfileContainer"
-import CerReportContainer from "./CarReportContainer"
+import CarReportContainer from "./CarReportContainer"
 import workedDaysHistory from "../components/WorkedDaysHistory/workedDaysHistory"
+import WorkedDaysHistoryContainer from "./WorkedDaysHistoryContainer"
 
 const Drawer = createDrawerNavigator();
 
@@ -21,8 +22,8 @@ const Main = () => {
         <Drawer.Screen name="login" component={Login} />
         <Drawer.Screen name="home" component={HomeContainer} />
         <Drawer.Screen name="profile" component={ProfileContainer} />
-        <Drawer.Screen name="carReport" component={CerReportContainer} />
-        <Drawer.Screen name="workedDaysHistory" component={workedDaysHistory} />
+        <Drawer.Screen name="carReport" component={CarReportContainer} />
+        <Drawer.Screen name="WorkedDaysHistoryContainer" component={WorkedDaysHistoryContainer} />
     </Drawer.Navigator>
   );
 };
