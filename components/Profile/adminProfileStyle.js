@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "35%",
+    // height: "35%",
   },
   labelstyle: {
     color: "black",
