@@ -11,9 +11,6 @@ export const styles = StyleSheet.create({
     padding: 10,
     display: "flex",
   },
-  button: {
-    backgroundColor: "#F9B233",
-  },
   map: {
     width: "100%",
     height: 500,
@@ -44,9 +41,11 @@ export const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
     elevation: 2,
     borderRadius: 10,
-    backgroundColor: "#353535",
+    backgroundColor: "#F9B233",
   },
 
   buttonClose: {
