@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 // import { signOutUser } from "../../redux/reducer/userActions";
 
 import {
@@ -20,28 +20,28 @@ function CustomDrawerContent(props) {
 //     dispatch(signOutUser()).then(() => props.navigation.navigate("home"));
 //   };
 
-//   function renderMainDrawer() {
-//     return (
-//       <View>
-//         {props.drawerItems.map((parent) => (
-//           <View key={parent.key}>
-//             <TouchableOpacity
-//               key={parent.key}
-//               testID={parent.key}
-//               onPress={() => {
-//                 props.navigation.navigate(parent.key);
-//               }}
-//             >
-//               <View style={styles.parentItem}>
-//                 <Text style={[styles.icon, styles.title]}>{parent.title}</Text>
-//               </View>
-//             </TouchableOpacity>
-//           </View>
-//         ))}
-//         {renderLogoutBtn()}
-//       </View>
-//     );
-//   }
+  function renderMainDrawer() {
+    return (
+      <View>
+        {props.drawerItems.map((parent) => (
+          <View key={parent.key}>
+            <TouchableOpacity
+              key={parent.key}
+              testID={parent.key}
+              onPress={() => {
+                props.navigation.navigate(parent.key);
+              }}
+            >
+              <View style={styles.parentItem}>
+                <Text style={[styles.icon, styles.title]}>{parent.title}</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        ))}
+        {/* {renderLogoutBtn()} */}
+      </View>
+    );
+  }
 
 //   function renderLogoutBtn() {
 //     return (
@@ -67,7 +67,7 @@ function CustomDrawerContent(props) {
           style={styles.logo}
           />
       </View>
-        <Text h1 style={{color: "white"}}>hola k ase</Text>
+      {renderMainDrawer()}
       </SafeAreaView>
     </ScrollView>
   );

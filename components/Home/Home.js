@@ -33,12 +33,14 @@ export const Home = () => {
       <Button
       title="Controlar vehiculos" 
       buttonStyle={styles.button}
-      icon={<Icon name='arrow-alt-circle-right' size={25} color='white' style={{marginRight:'5%'}}/>}
+      titleStyle={{color: "black"}}
+      icon={<Icon name='arrow-alt-circle-right' size={25} color='black' style={{marginRight:'5%'}}/>}
       />
       <Button
       title="Reportar vehiculo" 
       buttonStyle={styles.button}
-      icon={<Icon name='arrow-alt-circle-right' size={25} color='white' style={{marginRight:'5%'}}/>}
+      titleStyle={{color: "black", display: "flex", justifyContent: "flex-start"}}
+      icon={<Icon name='arrow-alt-circle-right' size={25} color='black' style={{marginRight:'5%', display: "flex", justifyContent: "flex-end"}}/>}
       />
       {/* </Card> */}
     </View>
