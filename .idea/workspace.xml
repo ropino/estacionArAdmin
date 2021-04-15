@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bff74d56-02fd-407e-b8d8-510bde8f810e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qkrEvuf76St0waqEz30JvxuVPZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bff74d56-02fd-407e-b8d8-510bde8f810e" name="Default Changelist" comment="" />
+      <created>1617634323441</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617634323441</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="861" y="100" width="582" height="664" key="AVDManager" timestamp="1617920187736">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="861" y="100" width="582" height="664" key="AVDManager/0.0.1536.864/1920.0.1536.864@0.0.1536.864" timestamp="1617920187736" />
+    <state x="809" y="199" key="run.anything.popup" timestamp="1617634464618">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="809" y="199" key="run.anything.popup/0.0.1536.864/1920.0.1536.864@0.0.1536.864" timestamp="1617634464618" />
+  </component>
+</project>
