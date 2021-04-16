@@ -9,6 +9,7 @@ import ProfileContainer from "./ProfileContainer"
 import CarControlContainer from "./CarControlContainer";
 import CerReportContainer from "./CarReportContainer"
 import workedDaysHistory from "../components/WorkedDaysHistory/workedDaysHistory"
+import parkedCarHistory from "../components/ParkedCarHistory/ParkedCarHistory";
 
 const Drawer = createDrawerNavigator();
 
@@ -23,6 +24,7 @@ const Main = () => {
         <Drawer.Screen name="home" component={HomeContainer} />
         <Drawer.Screen name="profile" component={ProfileContainer} />
         <Drawer.Screen name="carControl" component={CarControlContainer} />
+        <Drawer.Screen name="parkedCarHistory" component={parkedCarHistory} />
         
         <Drawer.Screen name="carReport" component={CerReportContainer} />
         <Drawer.Screen name="workedDaysHistory" component={workedDaysHistory} />

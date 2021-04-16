@@ -1,12 +1,12 @@
 import React from "react";
-import { styles } from "./carControlStyle";
+import { styles } from "./ParkedCarHistoryStyle";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 
 
-const CarControl = () => {
+const parkedCarHistory = () => {
     const navigation = useNavigation();
 
   return (
@@ -14,9 +14,9 @@ const CarControl = () => {
       <SafeAreaView>
         <View>
           <Card containerStyle={styles.title}>
-            <Text h4>Autos estacionados</Text>
+            <Text h4>Historial Vehículos</Text>
             <Text h5 style={{ textAlign: "center" }}>
-              Cuadra: 182
+              Cuadra: 182 15/04/2021
             </Text>
             {/* ESTA MUY HARCODEADO LOS STYLES, HAY QUE REVISAR */}
           </Card>
@@ -54,24 +54,9 @@ const CarControl = () => {
             </View>
           </Card>
         </View>
-        <View style={{ flex: 1 }}>
-          <Button
-            title="Historial"
-            buttonStyle={styles.button}
-            titleStyle={{ color: "black" }}
-            icon={
-              <Icon
-                name="arrow-alt-circle-right"
-                size={25}
-                color="black"
-                style={{ marginRight: "5%" }}
-                onPress={() => navigation.navigate("parkedCarHistory")}
-              />
-            }
-          />
-        </View>
+       
       </SafeAreaView>
     </ScrollView>
   );
 };
-export default CarControl;
+export default parkedCarHistory;

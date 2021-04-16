@@ -17,7 +17,7 @@ const workedDaysHistory = () => {
               Historial dias trabajados
             </Text>
           </View>
-          <Card containerStyle={styles.card} key={history.finalTime}>
+          <Card containerStyle={styles.card} >
             <Text h6>15/4/2021</Text>
             <Text h4>Hora ingreso: 08:00</Text>
             <Text h4>Hora egreso: 16:00</Text>

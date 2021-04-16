@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
-import carControl from "../components/CarControl/carControl";
-import CarControl from "../components/CarControl/carControl";
+import ParkedCarHistoryContainer from "../components/ParkedCarHistory/ParkedCarHistory";
+
 
 const Stack = createStackNavigator();
 
-const CarControlContainer = () => {
+const ParkedCarHistoryContainer = () => {
     return (
         <>
         <Stack.Navigator>
         <Stack.Screen
-            name="carControl"
-            component={carControl}
+            name="parkedCarHistoryContainer"
+            component={ParkedCarHistoryContainer}
             options={({ navigation }) => ({
               title: "",
               headerStyle: {
@@ -49,4 +49,4 @@ const CarControlContainer = () => {
 };
 
 
-export default CarControlContainer;
+export default ParkedCarHistoryContainer;

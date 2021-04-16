@@ -7,16 +7,18 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
   ImageBackground,
+  ScrollView
 } from "react-native";
-import { Button, Input, Card, Image, Text, } from "react-native-elements";
+import { Button, Input, Card, Image, Text } from "react-native-elements";
 import { styles } from "./adminProfileStyle";
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native";
 
 
 const adminProfile = (props) => {
   const navigation = useNavigation();
 
   return (
+    <ScrollView>
       <SafeAreaView style={styles.container}>
         <Card containerStyle={styles.input}>
           <Input
@@ -67,12 +69,11 @@ const adminProfile = (props) => {
           <Button
             buttonStyle={styles.colores}
             title="Solicitar actualizacion de datos"
-
           ></Button>
           <Button
             buttonStyle={styles.colores}
             title="Historial de días trabajados"
-            onPress={()=>navigation.navigate("workedDaysHistory")}
+            onPress={() => navigation.navigate("workedDaysHistory")}
           ></Button>
         </View>
         <View style={styles.signin}>
@@ -80,19 +81,19 @@ const adminProfile = (props) => {
             type="clear"
             title="¿Desea modificar su contraseña?"
             titleStyle={styles.clearButton}
-            
           ></Button>
         </View>
 
         {/* <View style={styles.imagen}>
           <ImageBackground
-            style={styles.stretch}
-            source={{
-              uri: "https://i.postimg.cc/mrWQN3x1/logo-final-8.png",
-            }}
+          style={styles.stretch}
+          source={{
+            uri: "https://i.postimg.cc/mrWQN3x1/logo-final-8.png",
+          }}
           />
         </View> */}
       </SafeAreaView>
+    </ScrollView>
   );
 };
 
