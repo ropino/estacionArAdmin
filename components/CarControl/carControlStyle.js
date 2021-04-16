@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F9B233",
   },
   title: {
-   
+    borderColor: "#F9B233",
     alignItems: "center",
     backgroundColor: "#F9B233",
     borderRadius: 10,
@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     display: "flex",
+    borderColor: "#F9B233",
   },
   button: {
    

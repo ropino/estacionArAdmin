@@ -4,6 +4,7 @@ import { View, SafeAreaView, ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
+import ParkedCarHistoryContainer from "../../containers/ParkedCarHistoryContainer"
 
 
 const CarControl = () => {
@@ -59,13 +60,13 @@ const CarControl = () => {
             title="Historial"
             buttonStyle={styles.button}
             titleStyle={{ color: "black" }}
+            onPress={() => navigation.navigate("parkedCarHistoryContainer")}
             icon={
               <Icon
                 name="arrow-alt-circle-right"
                 size={25}
                 color="black"
                 style={{ marginRight: "5%" }}
-                onPress={() => navigation.navigate("parkedCarHistory")}
               />
             }
           />
