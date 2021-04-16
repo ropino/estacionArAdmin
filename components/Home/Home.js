@@ -3,9 +3,12 @@ import { View, SafeAreaView } from "react-native";
 import { Card, Text, Button } from "react-native-elements";
 import { styles } from "./HomeStyle";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { useNavigation } from "@react-navigation/native";
 
 
 export const Home = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={{ backgroundColor: "black", height: "100%" }}>
     <View style={{ marginHorizontal: 15, marginVertical: 10 }}>
@@ -41,6 +44,7 @@ export const Home = () => {
       buttonStyle={styles.button}
       titleStyle={{color: "black", display: "flex", justifyContent: "flex-start"}}
       icon={<Icon name='arrow-alt-circle-right' size={25} color='black' style={{marginRight:'5%', display: "flex", justifyContent: "flex-end"}}/>}
+      onPress={()=>navigation.navigate("carReport")}
       />
       {/* </Card> */}
     </View>

@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
+import workedDaysHistory from "../components/WorkedDaysHistory/workedDaysHistory"
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import carReport from "../components/CarReport/carReport"
 
 const Stack = createStackNavigator();
 
-const carReportContainer = () => {
-    return (
-        <>
-           <Stack.Navigator>
+const WorkedDaysHistoryContainer = () => {
+  return (
+    <>
+      <Stack.Navigator>
         <Stack.Screen
           name="profile"
-          component={carReport}
+          component={workedDaysHistory}
           options={({ navigation }) => ({
             title: "",
             headerStyle: {
@@ -42,9 +42,9 @@ const carReportContainer = () => {
             ),
           })}
         />
-      </Stack.Navigator>  
-        </>
-    );
+      </Stack.Navigator>
+    </>
+  );
 };
 
-export default carReportContainer;
+export default WorkedDaysHistoryContainer;

@@ -73,7 +73,8 @@ const adminProfile = (props) => {
           <Button
             buttonStyle={styles.colores}
             title="Historial de días trabajados"
-            onPress={() => navigation.navigate("workedDaysHistory")}
+            onPress={()=>navigation.navigate("WorkedDaysHistoryContainer")}
+
           ></Button>
         </View>
         <View style={styles.signin}>
