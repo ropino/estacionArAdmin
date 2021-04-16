@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
         margin: 10,
         padding: 10,
         display: "flex",
+        borderColor: "#F9B233"
     },
     button: {
         padding: 10,
