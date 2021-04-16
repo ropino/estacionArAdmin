@@ -38,6 +38,7 @@ export const Home = () => {
       buttonStyle={styles.button}
       titleStyle={{color: "black"}}
       icon={<Icon name='arrow-alt-circle-right' size={25} color='black' style={{marginRight:'5%'}}/>}
+      onPress={()=>navigation.navigate("carControl")}
       />
       <Button
       title="Reportar vehiculo" 
