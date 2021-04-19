@@ -6,11 +6,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "black",
     height: "100%",
   },
-  stretch: {
-    width: 200,
-    height: 180,
-    resizeMode: "stretch",
-  },
   card: {
     backgroundColor: "#F9B233",
     borderRadius: 10,
@@ -18,7 +13,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     display: "flex",
     borderColor: "#F9B233",
-    height: 60,
+    height: 70,
   },
   title: {
     display: "flex",
@@ -33,53 +28,21 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     fontSize: 18,
     textAlign: "center",
-    color:"#f9b233"
+    color: "#f9b233",
   },
-  fixToText: {
-    flexDirection: "column",
-    justifyContent: "center",
-    marginVertical: 30,
-    marginHorizontal: 30,
-  },
-  imagen: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    // height: "35%",
-  },
-  labelstyle: {
-    color: "black",
-    textAlign: "center",
-  },
-  formStyle: {
-    margin: 20,
-  },
-  itemStyle: {
+  message: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
     marginTop: 30,
-    borderWidth: 1,
-    borderColor: "black",
   },
-  colores: {
-    fontSize: 20,
+  card1: {
+    width: "90%",
     backgroundColor: "black",
-    marginVertical: 10,
-  },
-  input: {
-    backgroundColor: "black",
-    borderRadius: 10,
-    opacity: 0.5,
-    marginTop: 30,
-    borderColor: "black",
-  },
-  colorInput: {
-    color: "white",
-  },
-  signin: {
+    display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    // marginTop: 5,
-  },
-  clearButton: {
-    color: "black",
+    borderColor: "#f9b233",
+    borderWidth: 2,
   },
 });

@@ -19,7 +19,7 @@ const Drawer = createDrawerNavigator();
 const Main = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="support" // original "home"
+      initialRouteName="home" // original "home"
       drawerContent={(props) => (
         <CustomDrawerContent drawerItems={drawerItemsMain} {...props} />
       )}>
