@@ -14,12 +14,13 @@ const WorkedDaysHistoryContainer = () => {
           name="profile"
           component={workedDaysHistory}
           options={({ navigation }) => ({
-            title: "",
+            title: "Historial laboral",
             headerStyle: {
               backgroundColor: "#F9B233",
               elevation: 0,
               shadowColor: "transparent",
             },
+            headerTitleAlign: 'center',
             headerTintColor: "#fff",
             headerTitleStyle: {
               fontWeight: "bold",
@@ -38,6 +39,20 @@ const WorkedDaysHistoryContainer = () => {
                 onPress={() => {
                   navigation.toggleDrawer();
                 }}
+              />
+            ),
+            headerRight: () => (
+              <Button
+              type="clear"
+                icon={
+                  <Icon
+                    name="arrow-circle-left"
+                    size={35}
+                    color="white"
+                    style={{ marginRight: 10}}
+                  />
+                }
+                onPress={() => navigation.goBack()}
               />
             ),
           })}

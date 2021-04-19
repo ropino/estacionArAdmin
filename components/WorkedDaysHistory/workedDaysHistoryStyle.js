@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
         height: 60,
         flexDirection: "row", 
         justifyContent: "center", 
-        padding: 15,
+        padding: 10,
     },
     card: {
         backgroundColor: "#F9B233",
