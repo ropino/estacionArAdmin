@@ -3,13 +3,37 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F9B233",
+    backgroundColor: "black",
     height: "100%",
   },
   stretch: {
     width: 200,
     height: 180,
     resizeMode: "stretch",
+  },
+  card: {
+    backgroundColor: "#F9B233",
+    borderRadius: 10,
+    margin: 10,
+    padding: 10,
+    display: "flex",
+    borderColor: "#F9B233",
+    height: 60,
+  },
+  title: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    fontSize: 18,
+    textAlign: "center",
+  },
+  title2: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    fontSize: 18,
+    textAlign: "center",
+    color:"#f9b233"
   },
   fixToText: {
     flexDirection: "column",

@@ -21,7 +21,7 @@ export const Home = () => {
           }}
         >
           <Text h4>Bienvenido Lalo</Text>
-          <Text h4>Admin cuadra: 182</Text>
+          <Text h4>Admin Manzana: 182</Text>
         </View>
       </Card>
       <View
