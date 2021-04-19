@@ -11,6 +11,7 @@ import CarReportContainer from "./CarReportContainer";
 import parkedCarHistory from "../components/ParkedCarHistory/ParkedCarHistory";
 import WorkedDaysHistoryContainer from "./WorkedDaysHistoryContainer"
 import ParkedCarHistoryContainer from "./ParkedCarHistoryContainer"
+import SupportContainer from "./SupportContainer"
 
 
 const Drawer = createDrawerNavigator();
@@ -18,7 +19,7 @@ const Drawer = createDrawerNavigator();
 const Main = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="home" // original "home"
+      initialRouteName="support" // original "home"
       drawerContent={(props) => (
         <CustomDrawerContent drawerItems={drawerItemsMain} {...props} />
       )}>
@@ -31,7 +32,7 @@ const Main = () => {
     
         <Drawer.Screen name="carReport" component={CarReportContainer} />
         <Drawer.Screen name="WorkedDaysHistoryContainer" component={WorkedDaysHistoryContainer} />
-
+        <Drawer.Screen name="support" component={SupportContainer} />
     </Drawer.Navigator>
   );
 };

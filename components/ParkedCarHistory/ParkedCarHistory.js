@@ -49,7 +49,6 @@ const parkedCarHistory = () => {
               </Text>
             </View>
             <View style={styles.view2}>
-              <Text h5>       15/04/2021</Text>
               <Text h5>     14:10 a 15:40</Text>
             </View>
           </Card>
