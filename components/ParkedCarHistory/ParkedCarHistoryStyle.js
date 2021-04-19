@@ -12,16 +12,12 @@ export const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     display: "flex",
+    width: 250,
   },
   view: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-  },
-  view2: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
   },
   card: {
     backgroundColor: "#F9B233",
@@ -30,6 +26,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     display: "flex",
     borderColor: "#F9B233",
+    height:40,
   },
   button: {
     padding: 10,

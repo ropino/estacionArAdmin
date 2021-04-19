@@ -1,26 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { styles } from "./carControlStyle";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
-import ParkedCarHistoryContainer from "../../containers/ParkedCarHistoryContainer"
-
+import ParkedCarHistoryContainer from "../../containers/ParkedCarHistoryContainer";
+import { SearchBar } from "react-native-elements";
 
 const CarControl = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+
+  const [input, setInput] = useState({
+    patente: "",
+  });
+
+  const handleChangeText = (value) => {
+    setInput({ ...input, patente: value });
+  };
 
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
       <SafeAreaView>
+        <SearchBar
+          placeholder="Buscar patente"
+          onChangeText={(value) => handleChangeText(value)} 
+          value={input.patente}
+          containerStyle={styles.searchBar}
+          inputStyle={styles.barra}
+        />
         <View>
-          <Card containerStyle={styles.title}>
-            <Text h4>Autos estacionados</Text>
-            <Text h5 style={{ textAlign: "center" }}>
-              Cuadra: 182
-            </Text>
-            {/* ESTA MUY HARCODEADO LOS STYLES, HAY QUE REVISAR */}
-          </Card>
+          <Text
+            h4
+            style={{
+              textAlign: "center",
+              color: "#f9b233",
+              marginVertical: 10,
+            }}
+          >
+            Manzana: 182
+          </Text>
           <Card containerStyle={styles.card}>
             <View style={styles.view}>
               <Icon name="check-circle" size={25} color="green" />
