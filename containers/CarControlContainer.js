@@ -5,48 +5,49 @@ import { Button } from "react-native-elements";
 import carControl from "../components/CarControl/carControl";
 import CarControl from "../components/CarControl/carControl";
 
+
 const Stack = createStackNavigator();
 
 const CarControlContainer = () => {
-    return (
-        <>
-        <Stack.Navigator>
+  return (
+    <>
+      <Stack.Navigator>
         <Stack.Screen
-            name="carControl"
-            component={carControl}
-            options={({ navigation }) => ({
-              title: "",
-              headerStyle: {
-                backgroundColor: "#F9B233",
-                 elevation: 0,
-                 shadowColor: 'transparent',
-              },
-              headerTintColor: "#fff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-              headerLeft: () => (
-                <Button
-                  type="clear"
-                  icon={
-                    <Icon
-                      name="bars"
-                      color="white"
-                      style={{ marginRight: 10 }}
-                      size={30}
-                    />
-                  }
-                  onPress={() => {
-                    navigation.toggleDrawer();
-                  }}
-                />
-              ),
-            })}
+          name="carControl"
+          component={carControl}
+          options={({ navigation }) => ({
+            title: "Vehículos estacionados",
+            headerTitleAlign: "center",
+            headerStyle: {
+              backgroundColor: "#F9B233",
+              elevation: 0,
+              shadowColor: "transparent",
+            },
+            headerTintColor: "#774D00",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerLeft: () => (
+              <Button
+                type="clear"
+                icon={
+                  <Icon
+                    name="bars"
+                    color="white"
+                    style={{ marginRight: 10 }}
+                    size={30}
+                  />
+                }
+                onPress={() => {
+                  navigation.toggleDrawer();
+                }}
+              />
+            ),
+          })}
         />
-        </Stack.Navigator>
-        </>
-    );
+      </Stack.Navigator>
+    </>
+  );
 };
-
 
 export default CarControlContainer;

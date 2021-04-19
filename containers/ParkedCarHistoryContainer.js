@@ -21,7 +21,7 @@ const ParkedCarHistoryContainer = () => {
               elevation: 0,
               shadowColor: "transparent",
             },
-            headerTintColor: "#fff",
+            headerTintColor: "#774D00",
             headerTitleStyle: {
               fontWeight: "bold",
             },

@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     display: "flex",
     borderColor: "#F9B233",
-    height:50,
+    height:40,
   },
   button: {
     padding: 10,
