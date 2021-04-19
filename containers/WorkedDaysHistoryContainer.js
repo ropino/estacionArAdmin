@@ -21,7 +21,7 @@ const WorkedDaysHistoryContainer = () => {
               shadowColor: "transparent",
             },
             headerTitleAlign: 'center',
-            headerTintColor: "#fff",
+            headerTintColor: "#774D00",
             headerTitleStyle: {
               fontWeight: "bold",
             },
