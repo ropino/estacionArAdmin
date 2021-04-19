@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
-import ParkedCarHistoryContainer from "../components/ParkedCarHistory/ParkedCarHistory";
+import parkedCarHistory from "../components/ParkedCarHistory/ParkedCarHistory";
 
 
 const Stack = createStackNavigator();
@@ -13,7 +13,7 @@ const ParkedCarHistoryContainer = () => {
         <Stack.Navigator>
         <Stack.Screen
             name="parkedCarHistoryContainer"
-            component={ParkedCarHistoryContainer}
+            component={parkedCarHistory}
             options={({ navigation }) => ({
               title: "",
               headerStyle: {
