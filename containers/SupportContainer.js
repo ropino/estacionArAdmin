@@ -1,28 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
+import support from "../components/Support/support"
 import { createStackNavigator } from "@react-navigation/stack";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
-import carControl from "../components/CarControl/carControl";
-import CarControl from "../components/CarControl/carControl";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const Stack = createStackNavigator();
 
-const CarControlContainer = () => {
+const SupportContainer = () => {
   return (
     <>
       <Stack.Navigator>
         <Stack.Screen
-          name="carControl"
-          component={carControl}
+          name="support"
+          component={support}
           options={({ navigation }) => ({
-            title: "Vehículos estacionados",
-            headerTitleAlign: "center",
+            title: "",
             headerStyle: {
               backgroundColor: "#F9B233",
               elevation: 0,
               shadowColor: "transparent",
             },
-            headerTintColor: "#774D00",
+            headerTintColor: "#fff",
             headerTitleStyle: {
               fontWeight: "bold",
             },
@@ -49,4 +47,4 @@ const CarControlContainer = () => {
   );
 };
 
-export default CarControlContainer;
+export default SupportContainer;

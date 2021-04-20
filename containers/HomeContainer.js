@@ -16,7 +16,7 @@ export const HomeContainer = () => {
     return (
       <Stack.Navigator>
           <Stack.Screen
-            name="drawer"
+            name="home"
             component={Home}
             options={({ navigation }) => ({
               title: "",
