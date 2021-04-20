@@ -7,14 +7,25 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
+import Login from "../components/Login/Login"
 
 const Stack = createStackNavigator();
 
 export const HomeContainer = () => {
-    // let userInTheApp = useSelector((state) => state.userReducer);
-  
+    const { adminId } = useSelector((state)=>state.adminReducer)
+  console.log("ADMIN ID DE HOME C", adminId)
     return (
       <Stack.Navigator>
+        {!adminId ? (
+          <Stack.Screen
+          name="Iniciar Sesion"
+          component={Login}
+          options={{
+            title: "",
+            headerTransparent: true,
+          }}
+        />
+        ) : (
           <Stack.Screen
             name="home"
             component={Home}
@@ -47,72 +58,7 @@ export const HomeContainer = () => {
               ),
             })}
         />
-        {/* {!userInTheApp.user ? (
-          <>
-            <Stack.Screen
-              name="Iniciar Sesion"
-              component={Login}
-              options={{
-                title: "",
-                headerTransparent: true,
-              }}
-            />
-  
-            <Stack.Screen
-              name="Registrate"
-              component={SignUp}
-              options={{
-                title: "",
-                headerStyle: {
-                  backgroundColor: "#F9B233",
-                  elevation: 0,
-              shadowColor: 'transparent',
-                },
-                headerTintColor: "#fff",
-                headerTitleStyle: {
-                  fontWeight: "bold",
-                },
-              }}
-            />
-          </>
-        ) : (
-          <Stack.Screen
-            name="drawer"
-            component={Home}
-            options={({ navigation }) => ({
-              title: "",
-              headerStyle: {
-                backgroundColor: "black",
-                // borderBottomWidth: 0,
-                 elevation: 0,
-                 shadowColor: 'transparent',
-                // shadowOffset: { height: 0, width: 0 },
-                // headerHideShadow: true,
-                // headerTransparent: true,
-              },
-              headerTintColor: "#fff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-              headerLeft: () => (
-                <Button
-                  type="clear"
-                  icon={
-                    <Icon
-                      name="bars"
-                      color="white"
-                      style={{ marginRight: 10 }}
-                      size={30}
-                    />
-                  }
-                  onPress={() => {
-                    navigation.toggleDrawer();
-                  }}
-                />
-              ),
-            })}
-          />
-        )} */}
+        )}
       </Stack.Navigator>
     );
   };
