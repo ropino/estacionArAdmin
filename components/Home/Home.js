@@ -38,8 +38,8 @@ export const Home = () => {
             marginBottom: 10,
           }}
         >
-          <Text h4>{`Bienvenido ${adminInfo.name}`}</Text>
-          <Text h4>{`Admin cuadra: ${adminInfo.zone}`}</Text>
+          <Text h4>{`Bienvenido ${adminInfo && adminInfo.name}`}</Text>
+          <Text h4>{`Admin cuadra: ${adminInfo && adminInfo.zone}`}</Text>
         </View>
       </Card>
       <View

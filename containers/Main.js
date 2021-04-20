@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation, NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator, DrawerItem } from "@react-navigation/drawer";
 import { drawerItemsMain } from "./Drawer/DrawerItemsMain";
@@ -14,14 +14,27 @@ import WorkedDaysHistoryContainer from "./WorkedDaysHistoryContainer";
 import ParkedCarHistoryContainer from "./ParkedCarHistoryContainer";
 import SupportContainer from "./SupportContainer";
 import firebase from "../back/db/firebase";
+import { setAdminLogged } from "../redux/reducer/adminActions"
 
 const Drawer = createDrawerNavigator();
 
 const Main = () => {
+  const { adminId } = useSelector((state)=>state.adminReducer)
+  const dispatch = useDispatch()
+
+
+  useEffect(()=>{
+    firebase.auth.onAuthStateChanged((loggedAdmin)=>{
+      if(loggedAdmin){
+        console.log(loggedAdmin.uid)
+        dispatch(setAdminLogged(loggedAdmin.uid))
+      }
+    })
+  },[])
 
   return (
     <Drawer.Navigator
-      initialRouteName="login" // original "home"
+      initialRouteName="home" // original "home"
       drawerContent={(props) => (
         <CustomDrawerContent drawerItems={drawerItemsMain} {...props} />
       )}

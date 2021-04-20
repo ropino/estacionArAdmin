@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   view2: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
   },
   card: {
     backgroundColor: "#F9B233",

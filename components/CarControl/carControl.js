@@ -51,8 +51,10 @@ const CarControl = () => {
     console.log("esta es LA ZONA:", adminInfo.zone);
     getParkingCarsInfoNow(adminInfo.zone);
   }, [adminInfo]);
+
   console.log("esto es ParkedCars:", parkedCars);
   console.log("esto es ParkedCarsEN 0:", parkedCars[0]);
+
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
       <SafeAreaView>
@@ -88,7 +90,9 @@ const CarControl = () => {
             </View>
             <View style={styles.view2}>
               <Text h5>{cars.date}</Text>
-              <Text h5>14:10 a 15:40</Text>
+              <Text h5>{cars.modelo}</Text>
+              <Text h5>{cars.marca}</Text>
+              <Text h5>Tiempo: {cars.time}hs</Text>
             </View>
           </Card>        
           ))}
