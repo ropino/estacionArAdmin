@@ -69,6 +69,7 @@ const adminProfile = (props) => {
           <Button
             buttonStyle={styles.colores}
             title="Solicitar actualizacion de datos"
+            onPress={()=>navigation.navigate("support")}
           ></Button>
           <Button
             buttonStyle={styles.colores}
