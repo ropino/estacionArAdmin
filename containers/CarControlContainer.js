@@ -5,7 +5,6 @@ import { Button } from "react-native-elements";
 import carControl from "../components/CarControl/carControl";
 import CarControl from "../components/CarControl/carControl";
 
-
 const Stack = createStackNavigator();
 
 const CarControlContainer = () => {

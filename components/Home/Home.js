@@ -4,11 +4,29 @@ import { Card, Text, Button } from "react-native-elements";
 import { styles } from "./HomeStyle";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import firebase from "../../back/db/firebase";
 
 
 export const Home = () => {
   const navigation = useNavigation();
+  const {adminId} = useSelector((state) => state.adminReducer);
+  const [adminInfo, setAdminInfo] = React.useState({});
 
+
+  const getAdminInfoNow = (id) => {
+    firebase.db
+      .collection("admin")
+      .doc(`${id}`)
+      .onSnapshot((querySnap) => {
+        return setAdminInfo(querySnap.data());
+      });
+  };
+ 
+  React.useEffect(() =>{
+    getAdminInfoNow(adminId);
+  }, [adminId])
+  
   return (
     <SafeAreaView style={{ backgroundColor: "black", height: "100%" }}>
     <View style={{ marginHorizontal: 15, marginVertical: 10 }}>
@@ -20,8 +38,8 @@ export const Home = () => {
             marginBottom: 10,
           }}
         >
-          <Text h4>Bienvenido Lalo</Text>
-          <Text h4>Admin Manzana: 182</Text>
+          <Text h4>{`Bienvenido ${adminInfo.name}`}</Text>
+          <Text h4>{`Admin cuadra: ${adminInfo.zone}`}</Text>
         </View>
       </Card>
       <View
