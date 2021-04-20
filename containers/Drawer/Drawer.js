@@ -1,6 +1,6 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { signOutUser } from "../../redux/reducer/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import { signOutUser } from "../../redux/reducer/adminActions";
 
 import {
   StyleSheet,
@@ -13,12 +13,12 @@ import {
 } from "react-native";
 
 function CustomDrawerContent(props) {
-//   const dispatch = useDispatch();
-//   const userInfo = useSelector((state) => state.userReducer.info);
+  const dispatch = useDispatch();
+  // const userInfo = useSelector((state) => state.userReducer.info);
 
-//   const logOut = () => {
-//     dispatch(signOutUser()).then(() => props.navigation.navigate("home"));
-//   };
+  const logOut = () => {
+    dispatch(signOutUser()).then(() => props.navigation.navigate("home"));
+  };
 
   function renderMainDrawer() {
     return (
@@ -38,22 +38,22 @@ function CustomDrawerContent(props) {
             </TouchableOpacity>
           </View>
         ))}
-        {/* {renderLogoutBtn()} */}
+        {renderLogoutBtn()}
       </View>
     );
   }
 
-//   function renderLogoutBtn() {
-//     return (
-//       <View>
-//         <TouchableOpacity onPress={() => logOut()} testID="customDrawer-logout">
-//           <View style={styles.parentItem}>
-//             <Text style={styles.title}>{"Salir"}</Text>
-//           </View>
-//         </TouchableOpacity>
-//       </View>
-//     );
-//   }
+  function renderLogoutBtn() {
+    return (
+      <View>
+        <TouchableOpacity onPress={() => logOut()} testID="customDrawer-logout">
+          <View style={styles.parentItem}>
+            <Text style={styles.title}>{"Salir"}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <ScrollView style={styles.drawerContainer}>
