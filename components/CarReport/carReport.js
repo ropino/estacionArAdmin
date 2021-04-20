@@ -12,13 +12,31 @@ import { Button, Input, Card, Image, Text } from "react-native-elements";
 import { styles } from "./carReportStyle";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome5";
-
+import {Camera} from 'expo-camera'
+import Camerajs from './Camera'
+import {setCamera} from '../../redux/reducer/cameraReducer'
 
 const carReport = () => {
-  const navigation = useNavigation();
+  const dispatch = useDispatch()
+  const cameraStatus = useSelector(state=>state.Camera)
+ // const [startCamera,setStartCamera] = React.useState(false)
+
+  const __startCamera = async () => {
+      const {status} = await Camera.requestPermissionsAsync()
+      if (status === 'granted') {
+        // start the camera
+        //setStartCamera(true)
+        dispatch(setCamera(true))
+        
+      } else {
+        Alert.alert('Access denied')
+      }
+    }
+  //const navigation = useNavigation();
 
   return (
     <>
+    {!cameraStatus?
       <SafeAreaView style={styles.container}>
         <Card containerStyle={styles.input}>
           <Input
@@ -51,11 +69,14 @@ const carReport = () => {
           />
         </Card>
         <View style={styles.fixToText}>
+          
           <Button buttonStyle={styles.colores} title="Agregar foto"
           icon={<Icon name='camera' size={25} color='white' style={{marginRight:'5%', display: "flex", justifyContent: "flex-end"}}/>}
+          onPress={()=> __startCamera()}
           >
           
           </Button>
+          
           <Button
             buttonStyle={styles.colores}
             title="Enviar"
@@ -73,6 +94,9 @@ const carReport = () => {
           />
         </View> */}
       </SafeAreaView>
+      :
+      <Camerajs />
+        }
     </>
   );
 };
