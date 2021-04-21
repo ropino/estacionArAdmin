@@ -11,12 +11,14 @@ import { useSelector } from "react-redux";
 
 const CarControl = () => {
   const navigation = useNavigation();
+  // const [filterParkedCars, setFilterParkedCars] = useState([]);
   const [input, setInput] = useState({
     patente: "",
   });
   const [parkedCars, setParkedCars] = useState([]);
   const { adminId } = useSelector((state) => state.adminReducer);
   const [adminInfo, setAdminInfo] = useState({});
+
   const getAdminInfoNow = (id) => {
     firebase.db
       .collection("admin")
@@ -32,7 +34,18 @@ const CarControl = () => {
 
   const handleChangeText = (value) => {
     setInput({ ...input, patente: value });
+    searchParkedCars()
   };
+
+  let autosFiltrados = []
+
+  const searchParkedCars = () => {
+    autosFiltrados = parkedCars.filter((car) => car.patente === input.patente)
+  };
+
+  console.log("ARR FILTRAO",autosFiltrados)
+  console.log("VALOR DEL INPUT", input);
+  // console.log("VALOR DEL FILTER PARKED CAR", filterParkedCars);
 
   const getParkingCarsInfoNow = (zone) => {
     firebase.db
@@ -53,7 +66,6 @@ const CarControl = () => {
   }, [adminInfo]);
 
   console.log("esto es ParkedCars:", parkedCars);
-  console.log("esto es ParkedCarsEN 0:", parkedCars[0]);
 
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
@@ -78,7 +90,7 @@ const CarControl = () => {
           </Text>
         </View>
         {parkedCars.map((cars) => (
-         <Card containerStyle={styles.card} key={cars.patente}>
+          <Card containerStyle={styles.card} key={cars.patente}>
             <View style={styles.view}>
               <Icon name="check-circle" size={25} color="green" />
               <Text h4 style={{ paddingRight: 40 }}>
@@ -94,8 +106,8 @@ const CarControl = () => {
               <Text h5>{cars.marca}</Text>
               <Text h5>Tiempo: {cars.time}hs</Text>
             </View>
-          </Card>        
-          ))}
+          </Card>
+        ))}
 
         {/* <Card containerStyle={styles.card}>
             <View style={styles.view}>
