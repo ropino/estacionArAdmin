@@ -35,4 +35,7 @@ export const getUserAdmin = createAsyncThunk("getUserAdmin", (adminId) => {
   .catch(() => console.log('Error en recibir info de user'))
 })
 
+export const logOutAdmin = createAction('logOutAdmin')
+
+
 

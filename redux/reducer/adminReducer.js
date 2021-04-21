@@ -4,7 +4,8 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   logAdmin,
   getUserAdmin,
-  signOutAdmin
+  signOutAdmin,
+  logOutUser
 } from "./adminActions";
 
 const initialState = {
@@ -20,6 +21,9 @@ export const adminReducer = createReducer(initialState, {
     return { ...state, adminInfo: action.payload };
   },
   [signOutAdmin.fulfilled]: (state, action) => {
-    return { ...state, user: action.payload };
+    return { ...state, adminId: action.payload };
+  },
+  [logOutUser]:(state,action)=>{
+    return {...state,adminId: {} , adminInfo:{}}
   },
 });
