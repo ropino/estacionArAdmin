@@ -10,12 +10,12 @@ import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
 
 export const HomeContainer = () => {
-     let userInTheApp = useSelector((state) => state.adminReducer);
+     let {adminId} = useSelector((state) => state.adminReducer);
   
     return (
       <Stack.Navigator>
           
-         {!userInTheApp.adminId? (
+         {!adminId? (
           <>
             <Stack.Screen
               name="Iniciar Sesion"
@@ -30,18 +30,14 @@ export const HomeContainer = () => {
           </>
         ) : (
           <Stack.Screen
-            name="drawer"
+            name="home"
             component={Home}
             options={({ navigation }) => ({
               title: "",
               headerStyle: {
                 backgroundColor: "black",
-                // borderBottomWidth: 0,
                  elevation: 0,
                  shadowColor: 'transparent',
-                // shadowOffset: { height: 0, width: 0 },
-                // headerHideShadow: true,
-                // headerTransparent: true,
               },
               headerTintColor: "#fff",
               headerTitleStyle: {

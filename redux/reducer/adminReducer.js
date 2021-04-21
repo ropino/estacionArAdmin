@@ -5,7 +5,8 @@ import {
   logAdmin,
   getUserAdmin,
   signOutAdmin,
-  logOutUser
+  logOutUser,
+  setAdminLogged
 } from "./adminActions";
 
 const initialState = {
@@ -25,5 +26,8 @@ export const adminReducer = createReducer(initialState, {
   },
   [logOutUser]:(state,action)=>{
     return {...state,adminId: {} , adminInfo:{}}
+  },
+  [setAdminLogged]: (state, action) => {
+    return { ...state, adminId: action.payload };
   },
 });

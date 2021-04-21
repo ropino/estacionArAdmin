@@ -39,3 +39,4 @@ export const logOutAdmin = createAction('logOutAdmin')
 
 
 
+export const setAdminLogged = createAction("adminLogged");
