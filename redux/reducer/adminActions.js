@@ -37,6 +37,6 @@ export const getUserAdmin = createAsyncThunk("getUserAdmin", (adminId) => {
 
 export const logOutAdmin = createAction('logOutAdmin')
 
-
-
 export const setAdminLogged = createAction("adminLogged");
+
+export const setAdminInfo = createAction("setAdminInfo")

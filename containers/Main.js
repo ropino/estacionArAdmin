@@ -5,7 +5,7 @@ import { createDrawerNavigator, DrawerItem } from "@react-navigation/drawer";
 import { drawerItemsMain } from "./Drawer/DrawerItemsMain";
 import CustomDrawerContent from "./Drawer/Drawer";
 import { HomeContainer } from "./HomeContainer";
-import Login from "../components/Login/Login"
+import Login from "../components/Login/Login";
 import ProfileContainer from "./ProfileContainer";
 import CarControlContainer from "./CarControlContainer";
 import CarReportContainer from "./CarReportContainer";
@@ -14,27 +14,40 @@ import WorkedDaysHistoryContainer from "./WorkedDaysHistoryContainer";
 import ParkedCarHistoryContainer from "./ParkedCarHistoryContainer";
 import SupportContainer from "./SupportContainer";
 import firebase from "../back/db/firebase";
-import { setAdminLogged } from "../redux/reducer/adminActions"
+import { setAdminLogged, setAdminInfo } from "../redux/reducer/adminActions";
 
 const Drawer = createDrawerNavigator();
 
 const Main = () => {
-  const { adminId } = useSelector((state)=>state.adminReducer)
-  const dispatch = useDispatch()
+  const { adminId } = useSelector((state) => state.adminReducer);
+  const dispatch = useDispatch();
 
+  const getAdminInfoNow = (id) => {
+    console.log(id)
+    firebase.db
+      .collection("admin")
+      .doc(`${id}`)
+      .onSnapshot((querySnap) => {
+        dispatch(setAdminInfo(querySnap.data()));
+      });
+  };
 
-  useEffect(()=>{
-    firebase.auth.onAuthStateChanged((loggedAdmin)=>{
-      if(loggedAdmin){
-        console.log(loggedAdmin.uid)
-        dispatch(setAdminLogged(loggedAdmin.uid))
+  useEffect(() => {
+    adminId && getAdminInfoNow(adminId)
+  },[adminId]);
+
+  useEffect(() => {
+    firebase.auth.onAuthStateChanged((loggedAdmin) => {
+      if (loggedAdmin) {
+        console.log(loggedAdmin.uid);
+        dispatch(setAdminLogged(loggedAdmin.uid));
       }
-    })
-  },[])
+    });
+  }, []);
 
   return (
     <Drawer.Navigator
-      initialRouteName="login" // original "home"
+      initialRouteName="home" // original "home"
       drawerContent={(props) => (
         <CustomDrawerContent drawerItems={drawerItemsMain} {...props} />
       )}
@@ -43,10 +56,7 @@ const Main = () => {
       <Drawer.Screen name="home" component={HomeContainer} />
       <Drawer.Screen name="profile" component={ProfileContainer} />
 
-      <Drawer.Screen
-        name="carControl"
-        component={CarControlContainer}
-      />
+      <Drawer.Screen name="carControl" component={CarControlContainer} />
       <Drawer.Screen
         name="parkedCarHistoryContainer"
         component={ParkedCarHistoryContainer}
