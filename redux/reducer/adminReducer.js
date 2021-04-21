@@ -10,7 +10,7 @@ import {
 } from "./adminActions";
 
 const initialState = {
-  adminId: {},
+  adminId: '',
   adminInfo: {},
 };
 
@@ -25,7 +25,7 @@ export const adminReducer = createReducer(initialState, {
     return { ...state, adminId: action.payload };
   },
   [logOutUser]:(state,action)=>{
-    return {...state,adminId: {} , adminInfo:{}}
+    return {...state, adminInfo:{}}
   },
   [setAdminLogged]: (state, action) => {
     return { ...state, adminId: action.payload };
