@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signOutUser } from "../../redux/reducer/adminActions";
+import { logOutAdmin,signOutAdmin } from "../../redux/reducer/adminActions";
 
 import {
   StyleSheet,
@@ -16,8 +16,11 @@ function CustomDrawerContent(props) {
   const dispatch = useDispatch();
   // const userInfo = useSelector((state) => state.userReducer.info);
 
-  const logOut = () => {
-    dispatch(signOutUser()).then(() => props.navigation.navigate("home"));
+  const logOutFirebase = () => {
+    dispatch(logOutAdmin())
+    dispatch(signOutAdmin()).then(() => {
+      return props.navigation.navigate("home");
+    });
   };
 
   function renderMainDrawer() {
@@ -46,7 +49,9 @@ function CustomDrawerContent(props) {
   function renderLogoutBtn() {
     return (
       <View>
-        <TouchableOpacity onPress={() => logOut()} testID="customDrawer-logout">
+        <TouchableOpacity onPress={() => {
+          logOutFirebase()
+          }} testID="customDrawer-logout">
           <View style={styles.parentItem}>
             <Text style={styles.title}>{"Salir"}</Text>
           </View>
