@@ -3,22 +3,37 @@ import { styles } from "./carControlStyle";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { useNavigation } from "@react-navigation/native";
+import { useLinkProps, useNavigation } from "@react-navigation/native";
 import ParkedCarHistoryContainer from "../../containers/ParkedCarHistoryContainer";
 import { SearchBar } from "react-native-elements";
 import firebase from "../../back/db/firebase";
 import { useSelector } from "react-redux";
 
+
 const CarControl = () => {
   const navigation = useNavigation();
-  // const [filterParkedCars, setFilterParkedCars] = useState([]);
-  const [input, setInput] = useState({
-    patente: "",
-  });
+  const [filterParkedCars, setFilterParkedCars] = useState([]);
+  const [patente, setPatente] = useState("");
   const [parkedCars, setParkedCars] = useState([]);
   const { adminId } = useSelector((state) => state.adminReducer);
   const [adminInfo, setAdminInfo] = useState({});
 
+  
+  useEffect(() => {
+    getAdminInfoNow(adminId);
+  }, [adminId]);
+  
+  useEffect(()=>{
+    if(!patente.length) setFilterParkedCars(parkedCars)
+    else setFilterParkedCars( parkedCars.filter((car) => car.patente.match(patente)));
+  },[patente, parkedCars])
+  
+  useEffect(() => {
+    //console.log("esta es LA ZONA:", adminInfo.zone);
+    getParkingCarsInfoNow(adminInfo.zone);
+  }, [adminInfo]);
+  
+  // 
   const getAdminInfoNow = (id) => {
     firebase.db
       .collection("admin")
@@ -28,25 +43,11 @@ const CarControl = () => {
       });
   };
 
-  useEffect(() => {
-    getAdminInfoNow(adminId);
-  }, [adminId]);
-
   const handleChangeText = (value) => {
-    setInput({ ...input, patente: value });
-    searchParkedCars()
+    setPatente(value)
   };
 
-  let autosFiltrados = []
-
-  const searchParkedCars = () => {
-    autosFiltrados = parkedCars.filter((car) => car.patente === input.patente)
-  };
-
-  console.log("ARR FILTRAO",autosFiltrados)
-  console.log("VALOR DEL INPUT", input);
-  // console.log("VALOR DEL FILTER PARKED CAR", filterParkedCars);
-
+// se puede hacer cuando carga la app 
   const getParkingCarsInfoNow = (zone) => {
     firebase.db
       .collection("parkings")
@@ -60,12 +61,7 @@ const CarControl = () => {
       });
   };
 
-  useEffect(() => {
-    console.log("esta es LA ZONA:", adminInfo.zone);
-    getParkingCarsInfoNow(adminInfo.zone);
-  }, [adminInfo]);
-
-  console.log("esto es ParkedCars:", parkedCars);
+  // console.log("esto es ParkedCars:", parkedCars);
 
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
@@ -73,7 +69,7 @@ const CarControl = () => {
         <SearchBar
           placeholder="Buscar patente"
           onChangeText={(value) => handleChangeText(value)}
-          value={input.patente}
+          value={patente}
           containerStyle={styles.searchBar}
           inputStyle={styles.barra}
         />
@@ -88,8 +84,9 @@ const CarControl = () => {
           >
             {`Manzana: ${adminInfo.zone}`}
           </Text>
+        
         </View>
-        {parkedCars.map((cars) => (
+        {filterParkedCars.map((cars) => (
           <Card containerStyle={styles.card} key={cars.patente}>
             <View style={styles.view}>
               <Icon name="check-circle" size={25} color="green" />
