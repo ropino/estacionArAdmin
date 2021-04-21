@@ -19,53 +19,54 @@ import {setCamera} from '../../redux/reducer/cameraReducer'
 const carReport = () => {
   const dispatch = useDispatch()
   const cameraStatus = useSelector(state=>state.Camera)
- // const [startCamera,setStartCamera] = React.useState(false)
+  const [startCamera,setStartCamera] = React.useState(false)
 
-  const __startCamera = async () => {
-      const {status} = await Camera.requestPermissionsAsync()
-      if (status === 'granted') {
-        // start the camera
-        //setStartCamera(true)
-        dispatch(setCamera(true))
+  const __startCamera = () => {
+      // const {status} = await Camera.requestPermissionsAsync()
+      // if (status === 'granted') {
+        //start the camera
+        setStartCamera(true)
+        //dispatch(setCamera (true))
         
-      } else {
-        Alert.alert('Access denied')
-      }
+      // } else {
+      //   Alert.alert('Access denied')
+      // }
     }
   //const navigation = useNavigation();
 
   return (
     <>
-    {!cameraStatus?
+    {console.log('CAMERA STATUS', startCamera)}c
+    {!startCamera?
       <SafeAreaView style={styles.container}>
         <Card containerStyle={styles.input}>
           <Input
             label="Patente"
             name="patente"
-            // placeholder={userInfo ? userInfo.name : ""}
+            //placeholder={userInfo ? userInfo.name : ""}
             inputStyle={styles.colorInput}
-            // value={input.name}
+            //value={input.name}
           />
           <Input
             label="Modelo"
             name="modelo"
-            // placeholder={userInfo ? userInfo.name : ""}
+            //placeholder={userInfo ? userInfo.name : ""}
             inputStyle={styles.colorInput}
-            // value={input.name}
+            //value={input.name}
           />
           <Input
             label="Código de manzana"
             name="codigo"
-            // placeholder={userInfo ? userInfo.lastname : ""}
+           // placeholder={userInfo ? userInfo.lastname : ""}
             inputStyle={styles.colorInput}
-            // value={input.lastname}
+            //value={input.lastname}
           />
           <Input
             label="Detalle de infracción"
             name="detalle"
-            // placeholder={userInfo ? userInfo.name : ""}
+            //placeholder={userInfo ? userInfo.name : ""}
             inputStyle={styles.colorInput}
-            // value={input.name}
+            //value={input.name}
           />
         </Card>
         <View style={styles.fixToText}>
@@ -81,7 +82,7 @@ const carReport = () => {
             buttonStyle={styles.colores}
             title="Enviar"
             icon={<Icon name='paper-plane' size={25} color='white' style={{marginRight:'5%', display: "flex", justifyContent: "flex-end"}}/>}
-            // onPress={()=>navigation.navigate("WorkedDaysHistoryContainer")}
+            onPress={()=>navigation.navigate("WorkedDaysHistoryContainer")}
           ></Button>
         </View>
 
@@ -96,7 +97,7 @@ const carReport = () => {
       </SafeAreaView>
       :
       <Camerajs />
-        }
+       }
     </>
   );
 };

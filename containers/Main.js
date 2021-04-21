@@ -5,7 +5,7 @@ import { createDrawerNavigator, DrawerItem } from "@react-navigation/drawer";
 import { drawerItemsMain } from "./Drawer/DrawerItemsMain";
 import CustomDrawerContent from "./Drawer/Drawer";
 import { HomeContainer } from "./HomeContainer";
-import Login from "../components/Login/Login";
+import Login from "../components/Login/Login"
 import ProfileContainer from "./ProfileContainer";
 import CarControlContainer from "./CarControlContainer";
 import CarReportContainer from "./CarReportContainer";
@@ -34,7 +34,7 @@ const Main = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName="home" // original "home"
+      initialRouteName="login" // original "home"
       drawerContent={(props) => (
         <CustomDrawerContent drawerItems={drawerItemsMain} {...props} />
       )}
