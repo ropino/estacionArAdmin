@@ -11,21 +11,7 @@ import firebase from "../../back/db/firebase";
 export const Home = () => {
   const navigation = useNavigation();
   const {adminId} = useSelector((state) => state.adminReducer);
-  const [adminInfo, setAdminInfo] = React.useState({});
-
-
-  const getAdminInfoNow = (id) => {
-    firebase.db
-      .collection("admin")
-      .doc(`${id}`)
-      .onSnapshot((querySnap) => {
-        return setAdminInfo(querySnap.data());
-      });
-  };
- 
-  React.useEffect(() =>{
-    getAdminInfoNow(adminId);
-  }, [adminId])
+  const {adminInfo} = useSelector((state) => state.adminReducer);
   
   return (
     <SafeAreaView style={{ backgroundColor: "black", height: "100%" }}>
@@ -38,8 +24,8 @@ export const Home = () => {
             marginBottom: 10,
           }}
         >
-          <Text h4>{`Bienvenido ${adminInfo && adminInfo.name}`}</Text>
-          <Text h4>{`Admin cuadra: ${adminInfo && adminInfo.zone}`}</Text>
+          <Text h4>{`Bienvenido ${adminInfo.name}`}</Text>
+          <Text h4>{`Admin cuadra: ${adminInfo.zone}`}</Text>
         </View>
       </Card>
       <View
