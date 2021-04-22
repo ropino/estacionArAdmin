@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
- import Login from "../components/Login/Login";
+import Login from "../components/Login/Login";
 import { Home } from "../components/Home/Home";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
@@ -11,6 +11,7 @@ const Stack = createStackNavigator();
 
 export const HomeContainer = () => {
      let {adminId} = useSelector((state) => state.adminReducer);
+     console.log(adminId)
   
     return (
       <Stack.Navigator>
