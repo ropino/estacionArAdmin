@@ -24,9 +24,9 @@ export const drawerItemsMain = [
       title: 'Soporte',
       route: {nav: 'MainDrawer', routeName: 'Settings', title: 'Settings'},
     },
-    {
-      key: 'logout',
-      title: 'Cerrar sesion',
-      route: {nav: 'MainDrawer', routeName: 'Settings', title: 'Settings'},
-    },
+//     {
+//       key: 'logout',
+//       title: 'Cerrar sesion',
+//       route: {nav: 'MainDrawer', routeName: 'Settings', title: 'Settings'},
+//     },
 ]
