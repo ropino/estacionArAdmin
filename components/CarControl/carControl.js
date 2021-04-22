@@ -17,9 +17,6 @@ const CarControl = () => {
   const [parkedCars, setParkedCars] = useState([]);
   const { adminId } = useSelector((state) => state.adminReducer);
   const { adminInfo } = useSelector((state) => state.adminReducer);
-
-console.log(adminInfo)
-  
   
   useEffect(()=>{
     if(!patente.length) setFilterParkedCars(parkedCars)
