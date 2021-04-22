@@ -11,7 +11,6 @@ export const Home = () => {
   const navigation = useNavigation();
   const [goWork, setGoWork] = React.useState(true);
   const [dateInicio, setDateInicio] = React.useState("");
-  const {adminId} = useSelector((state) => state.adminReducer);
   const {adminInfo} = useSelector((state) => state.adminReducer);
 
   const pressToWork = () => {
