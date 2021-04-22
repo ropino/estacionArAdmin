@@ -4,12 +4,14 @@ import { Card, Text, Button } from "react-native-elements";
 import { styles } from "./HomeStyle";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { goWork } from "../../redux/reducer/adminActions"
 import firebase from "../../back/db/firebase";
 
 export const Home = () => {
+  const dispatch = useDispatch()
   const navigation = useNavigation();
-  const [goWork, setGoWork] = React.useState(true);
+  const [isWorking, setIsWorking] = React.useState(true); // lo tengo que hacer un accion de redux
   const [dateInicio, setDateInicio] = React.useState("");
   const {adminInfo} = useSelector((state) => state.adminReducer);
 
@@ -17,7 +19,8 @@ export const Home = () => {
   const pressToWork = () => {
     let initialDate = new Date();
     setDateInicio(initialDate);
-    setGoWork(!goWork);
+    setIsWorking(!isWorking);
+    dispatch(goWork(true))
   };
 
   const pressToRest = (id) => {
@@ -33,10 +36,11 @@ export const Home = () => {
           tiempoTrabajado: `${finalDate.getHours()-dateInicio.getHours()}hs`,
         }),
       });
-    setGoWork(!goWork);
+      setIsWorking(!isWorking);
+      dispatch(goWork(false))
   };
 
-  return goWork ? (
+  return isWorking ? (
     <>
       <SafeAreaView style={{ backgroundColor: "black", height: "100%" }}>
         <Button
@@ -144,7 +148,7 @@ export const Home = () => {
                 }}
               />
             }
-            onPress={() => pressToRest(adminId)}
+            onPress={() => pressToRest(adminInfo.id)}
           />
           {/* </Card> */}
         </View>

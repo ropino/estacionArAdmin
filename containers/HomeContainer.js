@@ -11,8 +11,6 @@ const Stack = createStackNavigator();
 
 export const HomeContainer = () => {
      let {adminInfo} = useSelector((state) => state.adminReducer);
-     console.log(!adminInfo.email)
-     console.log(adminInfo.email)
   
     return (
       <Stack.Navigator>

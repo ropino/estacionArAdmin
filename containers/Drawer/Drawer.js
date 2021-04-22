@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logOutAdmin,signOutAdmin } from "../../redux/reducer/adminActions";
+import { logOutAdmin, signOutAdmin } from "../../redux/reducer/adminActions";
+import { initialState } from "../../redux/reducer/adminReducer";
 
 import {
   StyleSheet,
@@ -16,8 +17,10 @@ function CustomDrawerContent(props) {
   const dispatch = useDispatch();
   // const userInfo = useSelector((state) => state.userReducer.info);
 
+  console.log(initialState.isWorking)  // ESTO NUNCA CAMBIA SIEMPRE SE QUEDA EN NULL (pero en redux si cambia)
+
   const logOutFirebase = () => {
-    dispatch(logOutAdmin())
+    dispatch(logOutAdmin());
     dispatch(signOutAdmin()).then(() => {
       return props.navigation.navigate("login");
     });
@@ -47,13 +50,20 @@ function CustomDrawerContent(props) {
   }
 
   function renderLogoutBtn() {
-    return (
+    return initialState.isWorking ? (
+      <Text style={styles.title}>
+        {"No puedes cerrar sesión si aun estas trabajando, finaliza para continuar."}
+      </Text>
+    ) : (
       <View>
-        <TouchableOpacity onPress={() => {
-          logOutFirebase()
-          }} testID="customDrawer-logout">
+        <TouchableOpacity
+          onPress={() => {
+            logOutFirebase();
+          }}
+          testID="customDrawer-logout"
+        >
           <View style={styles.parentItem}>
-            <Text style={styles.title}>{"Cerrar sesion"}</Text>
+            <Text style={styles.title}>{"Cerrar sesión"}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -63,16 +73,16 @@ function CustomDrawerContent(props) {
   return (
     <ScrollView style={styles.drawerContainer}>
       <SafeAreaView
-      style={styles.container}
-      forceInset={{top: 'always', horizontal: 'never'}}>
-
-      <View style={styles.centered}>
-        <Image
-          source={{uri: "https://i.postimg.cc/mrWQN3x1/logo-final-8.png"}}
-          style={styles.logo}
+        style={styles.container}
+        forceInset={{ top: "always", horizontal: "never" }}
+      >
+        <View style={styles.centered}>
+          <Image
+            source={{ uri: "https://i.postimg.cc/mrWQN3x1/logo-final-8.png" }}
+            style={styles.logo}
           />
-      </View>
-      {renderMainDrawer()}
+        </View>
+        {renderMainDrawer()}
       </SafeAreaView>
     </ScrollView>
   );
