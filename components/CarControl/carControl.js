@@ -16,12 +16,10 @@ const CarControl = () => {
   const [patente, setPatente] = useState("");
   const [parkedCars, setParkedCars] = useState([]);
   const { adminId } = useSelector((state) => state.adminReducer);
-  const [adminInfo, setAdminInfo] = useState({});
+  const { adminInfo } = useSelector((state) => state.adminReducer);
 
+console.log(adminInfo)
   
-  useEffect(() => {
-    getAdminInfoNow(adminId);
-  }, [adminId]);
   
   useEffect(()=>{
     if(!patente.length) setFilterParkedCars(parkedCars)
@@ -29,19 +27,9 @@ const CarControl = () => {
   },[patente, parkedCars])
   
   useEffect(() => {
-    //console.log("esta es LA ZONA:", adminInfo.zone);
     getParkingCarsInfoNow(adminInfo.zone);
   }, [adminInfo]);
   
-  // 
-  const getAdminInfoNow = (id) => {
-    firebase.db
-      .collection("admin")
-      .doc(`${id}`)
-      .onSnapshot((querySnap) => {
-        return setAdminInfo(querySnap.data());
-      });
-  };
 
   const handleChangeText = (value) => {
     setPatente(value)
@@ -60,8 +48,6 @@ const CarControl = () => {
         return setParkedCars(cars);
       });
   };
-
-  // console.log("esto es ParkedCars:", parkedCars);
 
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
@@ -105,23 +91,6 @@ const CarControl = () => {
             </View>
           </Card>
         ))}
-
-        {/* <Card containerStyle={styles.card}>
-            <View style={styles.view}>
-              <Icon name="check-circle" size={25} color="green" />
-
-              <Text h4 style={{ paddingRight: 40 }}>
-                AUX642
-              </Text>
-              <Text h4 style={{ paddingRight: 20 }}>
-                BMW 323
-              </Text>
-            </View>
-            <View style={styles.view2}>
-              <Text h5>15/04/2021</Text>
-              <Text h5>14:10 a 15:40</Text>
-            </View>
-          </Card> */}
         <View style={{ flex: 1 }}>
           <Button
             title="Historial"
