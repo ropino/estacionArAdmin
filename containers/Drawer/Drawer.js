@@ -19,7 +19,7 @@ function CustomDrawerContent(props) {
   const logOutFirebase = () => {
     dispatch(logOutAdmin())
     dispatch(signOutAdmin()).then(() => {
-      return props.navigation.navigate("home");
+      return props.navigation.navigate("login");
     });
   };
 
