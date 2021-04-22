@@ -53,7 +53,7 @@ function CustomDrawerContent(props) {
           logOutFirebase()
           }} testID="customDrawer-logout">
           <View style={styles.parentItem}>
-            <Text style={styles.title}>{"Salir"}</Text>
+            <Text style={styles.title}>{"Cerrar sesion"}</Text>
           </View>
         </TouchableOpacity>
       </View>

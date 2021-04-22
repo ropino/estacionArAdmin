@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 
   fixToText: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     marginTop: 30,
     marginRight: 20,
   },
