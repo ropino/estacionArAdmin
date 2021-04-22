@@ -9,25 +9,13 @@ import firebase from "../../back/db/firebase";
 const parkedCarHistory = (props) => {
   const navigation = useNavigation();
 
-  const zone = props.route.params.zona;
+  const [parkedCars, setParkedCars] = useState([]);
 
   /* 
 ***traer vehiculos estacionados que ya finalizaron su estacionamiento ese mismo dia
 
-TENGO QUE TRAER EL PARKINGHISTORY FILTRANDO EL DIA Y LA ZONA QUE MACHEAN CON EL DIA ACTUAL Y LA ZONA DEL ADMIN 
-
-const getParkingCarsInfoNow = (zone) => {
-    firebase.db
-      .collection("parkings")
-      .where("zone", "==", `${zone}`)
-      .onSnapshot((querySnap) => {
-        let cars = [];
-        querySnap.forEach((doc) => {
-          cars.push(doc.data());
-        });
-        return setParkedCars(cars);
-      });
-  };
+TENGO QUE TRAER EL PARKINGHISTORY FILTRANDO EL DIA Y LA ZONA QUE MACHEAN CON EL DIA ACTUAL Y LA ZONA DEL ADMIN ;
+        
 ***ordenarlos del mas reciente al mas antiguo
 */
 
@@ -35,8 +23,8 @@ const getParkingCarsInfoNow = (zone) => {
 
   const getParkedCar = (zone, date) => {
     return firebase.db
-      .collection("users")
-      .where("parkingHistory.zone", "==", `${zone}`)
+      .collection("zones")
+      .where("", "==", `${zone}`)
       .get()
       .then((cars) => setAutos(cars));
   };

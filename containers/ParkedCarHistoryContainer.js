@@ -8,7 +8,6 @@ const Stack = createStackNavigator();
 
 const ParkedCarHistoryContainer = (props) => {
   const zona = props.route.params;
-  console.log("ESTE ZONA CONTAINER", props.route.params);
 
   return (
     <>
