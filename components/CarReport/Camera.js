@@ -24,7 +24,7 @@ export default function Cameras() {
         MediaLibrary.saveToLibraryAsync(uri)
       }
       
-      const __retakePicture = () => {
+      const __retakePicture = () => {!
         setCapturedImage(null)
         setPreviewVisible(false)
        dispatch(setCamera(false))
