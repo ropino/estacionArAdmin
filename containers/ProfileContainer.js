@@ -5,6 +5,7 @@ import { Button } from "react-native-elements";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 import adminProfile from "../components/Profile/adminProfile"
+import editPassword from "../components/EditPasswordAdmin/editPassword"
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,21 @@ const ProfileContainer = () => {
                 />
               ),
             })}
+        />
+        <Stack.Screen
+        name="editPassword"
+        component={editPassword}
+        options={({ navigation }) => ({
+            title: "",
+            headerStyle: {
+              backgroundColor: "#F9B233",
+              elevation: 0,
+              shadowColor: 'transparent',
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            }})}
         />
         </Stack.Navigator>
         </>
