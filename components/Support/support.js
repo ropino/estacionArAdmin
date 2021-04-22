@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   View,
   SafeAreaView,
@@ -8,23 +8,83 @@ import {
 } from "react-native";
 import { Card, Text, Button, Input } from "react-native-elements";
 import { styles } from "./supportStyle";
+import {useSelector} from 'react-redux'
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
+import firebase from "../../back/db/firebase";
+
 
 const support = () => {
     const [selectCall, setSelectCall] = React.useState(false)
     const [selectMessage, setSelectMessage] = React.useState(true)
+    const [message,setMessage]=React.useState({Mensajes:'',AsuntoM:''})
+    const [callMessage,setCallMessage]=React.useState({Asunto:''})
+    const {adminId} = useSelector((state) => state.adminReducer);
 
+
+    useEffect(()=>{
+      firebase.db
+      .collection('support')
+      .doc(`${adminId}`)
+      .get()
+      .then((doc)=>{
+        if (doc.exists) {console.log("Document data:", doc.data());}
+        else{
+          createSupport()
+        } 
+      })
+      }
+    ,[])
+
+    const createSupport = ()=>{
+      firebase.db
+      .collection('support')
+      .doc(`${adminId}`)
+      .set({
+        mensajeLlamada:[],
+        mensaje:[]
+      })
+    }
     const wantMessage = () => {
         setSelectMessage(true)
         setSelectCall(false)
     }
 
+
+
     const wantCall = () => {
         setSelectCall(true)
         setSelectMessage(false)
     }
+    const handleChangeTextCall = (name, value) => {
+      setCallMessage({ ...callMessage, [name]: value });
+      
+    };
+    const handleChangeTextMessage = (name, value) => {
+      setMessage({ ...message, [name]: value });
+       
+    };
 
+  const requestCall = ()=>{
+    firebase.db
+  .collection('support')
+  .doc(`${adminId}`)
+  .update({
+    mensajeLlamada: firebase.firebase.firestore.FieldValue.arrayUnion(callMessage)
+  })
+  setCallMessage({Asunto:''})
+
+  }
+  const sendMessage = ()=>{
+    firebase.db
+    .collection('support')
+    .doc(`${adminId}`)
+    .update({
+     mensaje:firebase.firebase.firestore.FieldValue.arrayUnion(message)
+    })
+    setMessage({Mensajes:'',AsuntoM:''})
+
+  }
 
 
   return (
@@ -69,6 +129,7 @@ const support = () => {
         >
           <TextInput
             placeholder="Asunto"
+            label="AsuntoM"
             style={{
               color: "#f9b233",
               fontSize: 22,
@@ -77,13 +138,18 @@ const support = () => {
               marginBottom: 15,
             }}
             maxLength={50}
+            onChangeText={(value) => handleChangeTextMessage("AsuntoM", value)}
+            value={message.AsuntoM}
           />
           <TextInput
             placeholder="Mensaje"
-            style={{ color: "#f9b233", fontSize: 18  }}
+            label="Mensajes"
+            style={{ color: "#f9b233", fontSize: 18 ,borderBottomColor: "grey", }}
             multiline
             numberOfLines={4}
             maxLength={250}
+            onChangeText={(value) => handleChangeTextMessage("Mensajes", value)}
+            value={message.Mensajes}
           />
           <Icon
             name="paper-plane"
@@ -95,6 +161,7 @@ const support = () => {
               justifyContent: "flex-end",
               marginTop: "8%",
             }}
+            onPress={()=>sendMessage()}
           />
         </Card>
         ) : (
@@ -103,12 +170,15 @@ const support = () => {
         >
           <TextInput
             placeholder="Asunto"
+            label="Llamada"
             style={{
               color: "#f9b233",
               fontSize: 22,
               marginBottom: 15,
             }}
             maxLength={50}
+            onChangeText={(value) => handleChangeTextCall("Asunto", value)}
+            value={callMessage.Asunto}
           />
           <Icon
             name="paper-plane"
@@ -120,6 +190,7 @@ const support = () => {
               justifyContent: "flex-end",
               marginTop: "8%",
             }}
+            onPress={()=>requestCall()}
           />
         </Card>
         )}

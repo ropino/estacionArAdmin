@@ -20,27 +20,23 @@ import { setCamera } from "../../redux/reducer/cameraReducer";
 const carReport = () => {
   const dispatch = useDispatch();
   const cameraStatus = useSelector((state) => state.Camera);
-
-  const [startCamera, setStartCamera] = React.useState(false);
-
-  const __startCamera = async () => {
-     const {status} = await Camera.requestPermissionsAsync()
-     if (status === 'granted') {
+  
+  const __startCamera = /* async */ () => {
+   /*   const {status} = await Camera.requestPermissionsAsync() */
+/*      if (status === 'granted') { */
     //start the camera
-    setStartCamera(true);
-    dispatch(setCamera (true))
+    dispatch(setCamera(true))
 
-    } else {
+    /* } else {
       Alert.alert('Access denied')
-    }
+    } */
   };
 
   //const navigation = useNavigation();
 
   return (
     <>
-      {console.log("CAMERA STATUS", startCamera)}
-      {!cameraStatus ? (
+      {!cameraStatus.camera ? (
         <SafeAreaView style={styles.container}>
           <Card containerStyle={styles.input}>
             <Input
@@ -90,7 +86,7 @@ const carReport = () => {
               }
               onPress={() => __startCamera()}
             ></Button>
-
+          
             <Button
               buttonStyle={styles.colores}
               title="Enviar"

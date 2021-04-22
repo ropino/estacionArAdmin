@@ -16,6 +16,16 @@ import { useNavigation } from "@react-navigation/native";
 
 const adminProfile = (props) => {
   const navigation = useNavigation();
+  const {adminInfo} = useSelector((state) => state.adminReducer);
+  // const [input, setInput] = useState({
+  //   email: "",
+  //   phone: "",
+  //   adress: "",
+  // })
+
+  // const handleChangeText = (name, value) => {
+  //   setInput({ ...input, [name]: value });
+  // };
 
   return (
     <ScrollView>
@@ -24,20 +34,23 @@ const adminProfile = (props) => {
           <Input
             label="Nombre"
             name="name"
-            // placeholder={userInfo ? userInfo.name : ""}
+            placeholder={adminInfo ? adminInfo.name : ""}
             inputStyle={styles.colorInput}
+            disabled={true}
             // value={input.name}
           />
           <Input
             label="Apellido"
             name="lastname"
-            // placeholder={userInfo ? userInfo.lastname : ""}
+            placeholder={adminInfo ? adminInfo.lastname : ""}
             inputStyle={styles.colorInput}
+            disabled={true}
             // value={input.lastname}
           />
           <Input
             label="DNI"
             name="dni"
+            disabled={true}
             // placeholder={userInfo ? userInfo.name : ""}
             inputStyle={styles.colorInput}
             // value={input.name}
@@ -46,23 +59,29 @@ const adminProfile = (props) => {
             label="Email"
             name="email"
             type="email"
-            // value={userInfo ? userInfo.email : ""}
             disabled={true}
+            placeholder={adminInfo ? adminInfo.email : ""}
             inputStyle={styles.colorInput}
+            // onChangeText={value => handleChangeText("email", value)}
+            // value={input.email}
           />
           <Input
             label="Telefono"
             name="telefono"
+            disabled={true}
             // placeholder={userInfo ? userInfo.name : ""}
             inputStyle={styles.colorInput}
-            // value={input.name}
+            // value={input.phone}
+            // onChangeText={value => handleChangeText("phone", value)}
           />
           <Input
             label="Direccion"
             name="direccion"
+            disabled={true}
             // placeholder={userInfo ? userInfo.name : ""}
             inputStyle={styles.colorInput}
-            // value={input.name}
+            // onChangeText={value => handleChangeText("adress", value)}
+            // value={input.adress}
           />
         </Card>
         <View style={styles.fixToText}>
@@ -83,6 +102,9 @@ const adminProfile = (props) => {
             type="clear"
             title="¿Desea modificar su contraseña?"
             titleStyle={styles.clearButton}
+            onPress={() => {
+              navigation.navigate("editPassword");
+            }}
           ></Button>
         </View>
 
