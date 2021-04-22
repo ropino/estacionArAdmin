@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styles } from "./ParkedCarHistoryStyle";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-elements";
@@ -6,10 +6,12 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 import firebase from "../../back/db/firebase";
 
-const parkedCarHistory = () => {
+const parkedCarHistory = (props) => {
   const navigation = useNavigation();
 
-/* 
+  const zone = props.route.params.zona;
+
+  /* 
 ***traer vehiculos estacionados que ya finalizaron su estacionamiento ese mismo dia
 
 TENGO QUE TRAER EL PARKINGHISTORY FILTRANDO EL DIA Y LA ZONA QUE MACHEAN CON EL DIA ACTUAL Y LA ZONA DEL ADMIN 
@@ -28,27 +30,38 @@ const getParkingCarsInfoNow = (zone) => {
   };
 ***ordenarlos del mas reciente al mas antiguo
 */
-//  const getParkedCar = (zone, date) => {
-//    firebase.db
-//    .collection ("users")
-//    .doc()
-//    .where("zone", "==", `${zone}`)
-//   console.log("ZONA", zone);
-   
-//  }
 
+  const [autos, setAutos] = useState([]);
 
+  const getParkedCar = (zone, date) => {
+    return firebase.db
+      .collection("users")
+      .where("parkingHistory.zone", "==", `${zone}`)
+      .get()
+      .then((cars) => setAutos(cars));
+  };
+
+  console.log("ZONA", zone);
+
+  console.log("AUTOS", autos);
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
       <SafeAreaView>
         <View>
-          <View style={{display: "flex", flexDirection:"row", justifyContent: "center"}}>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
             <Card containerStyle={styles.title}>
               <Text h5 style={{ textAlign: "center" }}>
                 Manzana: 182 15/04/2021
               </Text>
               {/* ESTA MUY HARCODEADO LOS STYLES, HAY QUE REVISAR */}
             </Card>
+            <Button onPress={() => getParkedCar()} />
           </View>
 
           <Card containerStyle={styles.card}>

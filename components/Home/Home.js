@@ -13,6 +13,7 @@ export const Home = () => {
   const {adminId} = useSelector((state) => state.adminReducer);
   const [adminInfo, setAdminInfo] = React.useState({});
 
+  
 
   const getAdminInfoNow = (id) => {
     firebase.db

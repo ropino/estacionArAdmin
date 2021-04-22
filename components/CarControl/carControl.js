@@ -9,11 +9,16 @@ import { SearchBar } from "react-native-elements";
 import firebase from "../../back/db/firebase";
 import { useSelector } from "react-redux";
 
-const CarControl = () => {
+const CarControl = (props) => {
   const navigation = useNavigation();
   const [input, setInput] = useState({
     patente: "",
   });
+
+  const zona= props.route.params;
+
+  console.log("ZONA CAR CONTROl", zona)
+
   const [parkedCars, setParkedCars] = useState([]);
   const { adminId } = useSelector((state) => state.adminReducer);
   const [adminInfo, setAdminInfo] = useState({});
@@ -118,7 +123,7 @@ const CarControl = () => {
             title="Historial"
             buttonStyle={styles.button}
             titleStyle={{ color: "black" }}
-            onPress={() => navigation.navigate("parkedCarHistoryContainer")}
+            onPress={() => navigation.navigate("parkedCarHistoryContainer", {zona:adminInfo.zone})}
             icon={
               <Icon
                 name="arrow-alt-circle-right"
