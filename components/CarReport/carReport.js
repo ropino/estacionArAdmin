@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import { Button, Input, Card, Image, Text } from "react-native-elements";
 import { styles } from "./carReportStyle";

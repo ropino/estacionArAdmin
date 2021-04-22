@@ -13,6 +13,7 @@ export const Home = () => {
   const [dateInicio, setDateInicio] = React.useState("");
   const {adminInfo} = useSelector((state) => state.adminReducer);
 
+  
   const pressToWork = () => {
     let initialDate = new Date();
     setDateInicio(initialDate);

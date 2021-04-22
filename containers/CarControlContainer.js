@@ -8,6 +8,8 @@ import CarControl from "../components/CarControl/carControl";
 const Stack = createStackNavigator();
 
 const CarControlContainer = () => {
+
+
   return (
     <>
       <Stack.Navigator>

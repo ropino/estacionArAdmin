@@ -17,7 +17,6 @@ const CarControl = () => {
   const [parkedCars, setParkedCars] = useState([]);
   const { adminId } = useSelector((state) => state.adminReducer);
   const { adminInfo } = useSelector((state) => state.adminReducer);
-
   useEffect(()=>{
     if(!patente.length) setFilterParkedCars(parkedCars)
     else setFilterParkedCars( parkedCars.filter((car) => car.patente.match(patente)));
@@ -93,7 +92,7 @@ const CarControl = () => {
             title="Historial"
             buttonStyle={styles.button}
             titleStyle={{ color: "black" }}
-            onPress={() => navigation.navigate("parkedCarHistoryContainer")}
+            onPress={() => navigation.navigate("parkedCarHistoryContainer", {zona:adminInfo.zone})}
             icon={
               <Icon
                 name="arrow-alt-circle-right"

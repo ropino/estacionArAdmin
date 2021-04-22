@@ -6,16 +6,19 @@ import parkedCarHistory from "../components/ParkedCarHistory/ParkedCarHistory";
 
 const Stack = createStackNavigator();
 
-const ParkedCarHistoryContainer = () => {
+const ParkedCarHistoryContainer = (props) => {
+  const zona = props.route.params;
+
   return (
     <>
       <Stack.Navigator>
         <Stack.Screen
           name="parkedCarHistoryContainer"
           component={parkedCarHistory}
+          initialParams={zona}
           options={({ navigation }) => ({
             title: "Historial vehículos",
-            headerTitleAlign: 'center',
+            headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "#F9B233",
               elevation: 0,
@@ -43,13 +46,13 @@ const ParkedCarHistoryContainer = () => {
             ),
             headerRight: () => (
               <Button
-              type="clear"
+                type="clear"
                 icon={
                   <Icon
                     name="arrow-circle-left"
                     size={35}
                     color="white"
-                    style={{ marginRight: 10}}
+                    style={{ marginRight: 10 }}
                   />
                 }
                 onPress={() => navigation.goBack()}
