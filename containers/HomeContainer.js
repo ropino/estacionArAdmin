@@ -10,13 +10,13 @@ import { useSelector } from "react-redux";
 const Stack = createStackNavigator();
 
 export const HomeContainer = () => {
-     let {adminId} = useSelector((state) => state.adminReducer);
-     console.log(adminId)
+     let {adminInfo} = useSelector((state) => state.adminReducer);
+     console.log(adminInfo)
   
     return (
       <Stack.Navigator>
           
-         {!adminId? (
+         {!adminInfo? (
           <>
             <Stack.Screen
               name="Iniciar Sesion"
