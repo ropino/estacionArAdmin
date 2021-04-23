@@ -44,6 +44,20 @@ const CarControlContainer = () => {
                 }}
               />
             ),
+            headerRight: () => (
+              <Button
+                type="clear"
+                icon={
+                  <Icon
+                    name="arrow-circle-left"
+                    size={35}
+                    color="white"
+                    style={{ marginRight: 10 }}
+                  />
+                }
+                onPress={() => navigation.goBack()}
+              />
+            ),
           })}
         />
       </Stack.Navigator>

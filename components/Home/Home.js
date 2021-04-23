@@ -11,7 +11,7 @@ import firebase from "../../back/db/firebase";
 export const Home = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation();
-  const [isWorking, setIsWorking] = React.useState(true); // lo tengo que hacer un accion de redux
+  const [isWorking, setIsWorking] = React.useState(true); 
   const [dateInicio, setDateInicio] = React.useState("");
   const {adminInfo} = useSelector((state) => state.adminReducer);
 
@@ -81,7 +81,7 @@ export const Home = () => {
               }}
             >
               <Text h4>{`Bienvenido ${adminInfo.name}`}</Text>
-              <Text h4>{`Admin cuadra: ${adminInfo.zone}`}</Text>
+              <Text h4>{`Admin Manzana: ${adminInfo.zone}`}</Text>
             </View>
           </Card>
           <View
@@ -91,7 +91,6 @@ export const Home = () => {
               marginBottom: 10,
             }}
           ></View>
-          {/* <Card containerStyle={styles.card}> */}
           <Button
             title="Controlar vehiculos"
             buttonStyle={styles.button}
@@ -150,7 +149,6 @@ export const Home = () => {
             }
             onPress={() => pressToRest(adminInfo.id)}
           />
-          {/* </Card> */}
         </View>
       </SafeAreaView>
     </>

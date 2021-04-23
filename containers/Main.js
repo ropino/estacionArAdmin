@@ -23,7 +23,6 @@ const Main = () => {
   const dispatch = useDispatch();
 
   const getAdminInfoNow = (id) => {
-    console.log(id)
     firebase.db
       .collection("admin")
       .doc(`${id}`)
@@ -39,7 +38,6 @@ const Main = () => {
   useEffect(() => {
     firebase.auth.onAuthStateChanged((loggedAdmin) => {
       if (loggedAdmin) {
-        console.log(loggedAdmin.uid);
         dispatch(setAdminLogged(loggedAdmin.uid));
       }
     });

@@ -46,7 +46,6 @@ const Login = () => {
     dispatch(logAdmin({ email, password }))
       .then(() => {
         {
-          console.log(`entre acá`);
           return navigation.navigate("home");
         }
       })
@@ -105,7 +104,7 @@ const Login = () => {
         <Input
           ref={mails}
           label="Email"
-          placeholder="email@adress.com"
+          placeholder="email@address.com"
           inputStyle={styles.colorInput}
           onChangeText={(value) => handleChangeText("email", value)}
           onBlur={(e) => {
@@ -136,7 +135,7 @@ const Login = () => {
         <Button
           disabled={!isOkFunction()}
           buttonStyle={styles.colores}
-          title="Iniciar sesion"
+          title="Iniciar sesión"
           onPress={() => {
             loginUserAdmin();
           }}

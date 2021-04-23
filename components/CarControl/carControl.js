@@ -4,7 +4,6 @@ import { View, SafeAreaView, ScrollView } from "react-native";
 import { Button, Card, Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useLinkProps, useNavigation } from "@react-navigation/native";
-import ParkedCarHistoryContainer from "../../containers/ParkedCarHistoryContainer";
 import { SearchBar } from "react-native-elements";
 import firebase from "../../back/db/firebase";
 import { useSelector } from "react-redux";
@@ -31,7 +30,6 @@ const CarControl = () => {
     setPatente(value)
   };
 
-// se puede hacer cuando carga la app 
   const getParkingCarsInfoNow = (zone) => {
     firebase.db
       .collection("parkings")
@@ -45,13 +43,14 @@ const CarControl = () => {
       });
   };
 
+
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
       <SafeAreaView>
         <SearchBar
           placeholder="Buscar patente"
           onChangeText={(value) => handleChangeText(value)}
-          value={patente}
+          value={patente.toUpperCase()}
           containerStyle={styles.searchBar}
           inputStyle={styles.barra}
         />
@@ -73,17 +72,17 @@ const CarControl = () => {
             <View style={styles.view}>
               <Icon name="check-circle" size={25} color="green" />
               <Text h4 style={{ paddingRight: 40 }}>
-                {cars.patente}
+                {cars.patente.toUpperCase()}
               </Text>
               <Text h4 style={{ paddingRight: 20 }}>
                 {cars.mode}
               </Text>
             </View>
             <View style={styles.view2}>
-              <Text h5>{cars.date}</Text>
+              <Text h5>{cars.date.split(" ")[1]}</Text>
               <Text h5>{cars.modelo}</Text>
               <Text h5>{cars.marca}</Text>
-              <Text h5>Tiempo: {cars.time}hs</Text>
+              <Text h5>Tiempo: {cars.time/60}hs</Text>
             </View>
           </Card>
         ))}

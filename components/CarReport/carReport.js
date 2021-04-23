@@ -17,15 +17,17 @@ import { Camera } from "expo-camera";
 import Camerajs from "./Camera";
 import { setCamera } from "../../redux/reducer/cameraReducer";
 
+ 
 const carReport = () => {
   const dispatch = useDispatch();
   const cameraStatus = useSelector((state) => state.Camera);
-  
+  const { adminInfo } = useSelector((state) => state.adminReducer);
+
   const __startCamera = /* async */ () => {
-   /*   const {status} = await Camera.requestPermissionsAsync() */
-/*      if (status === 'granted') { */
+    /*   const {status} = await Camera.requestPermissionsAsync() */
+    /*      if (status === 'granted') { */
     //start the camera
-    dispatch(setCamera(true))
+    dispatch(setCamera(true));
 
     /* } else {
       Alert.alert('Access denied')
@@ -42,30 +44,23 @@ const carReport = () => {
             <Input
               label="Patente"
               name="patente"
-              //placeholder={userInfo ? userInfo.name : ""}
-              inputStyle={styles.colorInput}
-              //value={input.name}
+              inputStyle={styles.patente}
             />
             <Input
               label="Modelo"
               name="modelo"
-              //placeholder={userInfo ? userInfo.name : ""}
               inputStyle={styles.colorInput}
-              //value={input.name}
             />
             <Input
               label="Código de manzana"
-              name="codigo"
-              // placeholder={userInfo ? userInfo.lastname : ""}
+              name="código"
               inputStyle={styles.colorInput}
-              //value={input.lastname}
+              value={adminInfo.zone}
             />
             <Input
               label="Detalle de infracción"
               name="detalle"
-              //placeholder={userInfo ? userInfo.name : ""}
               inputStyle={styles.colorInput}
-              //value={input.name}
             />
           </Card>
           <View style={styles.fixToText}>
@@ -86,7 +81,7 @@ const carReport = () => {
               }
               onPress={() => __startCamera()}
             ></Button>
-          
+
             <Button
               buttonStyle={styles.colores}
               title="Enviar"

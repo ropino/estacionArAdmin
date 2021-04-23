@@ -6,17 +6,17 @@ export const drawerItemsMain = [
     },
     {
       key: 'profile',
-      title: 'Perfil',
+      title: 'Mi perfil',
       route: {nav: 'MainDrawer', routeName: 'Settings', title: 'Settings'},
     },
     {
       key: 'carControl',
-      title: 'Control de autos estacionados',
+      title: 'Control de vehículos',
       route: {nav: 'MainDrawer', routeName: 'Settings', title: 'Settings'},
     },
     {
       key: 'carReport',
-      title: 'Reportar autos',
+      title: 'Reportar vehículo',
       route: {nav: 'MainDrawer', routeName: 'Settings', title: 'Settings'},
     },
     {

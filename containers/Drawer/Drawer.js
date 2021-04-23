@@ -15,9 +15,6 @@ import {
 
 function CustomDrawerContent(props) {
   const dispatch = useDispatch();
-  // const userInfo = useSelector((state) => state.userReducer.info);
-
-  console.log(initialState.isWorking)  // ESTO NUNCA CAMBIA SIEMPRE SE QUEDA EN NULL (pero en redux si cambia)
 
   const logOutFirebase = () => {
     dispatch(logOutAdmin());

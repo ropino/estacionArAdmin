@@ -19,6 +19,15 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
+  searchBar: {
+    alignItems: "center",
+    backgroundColor: "black",
+
+  },
+  barra: {
+    color: "#f9b233",
+  
+  },
   card: {
     backgroundColor: "#F9B233",
     borderRadius: 10,
