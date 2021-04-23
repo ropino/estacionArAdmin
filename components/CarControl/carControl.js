@@ -45,6 +45,10 @@ const CarControl = () => {
       });
   };
 
+  // let arranqueH = new Date().getHours();
+  // let arranqueM = (new Date().getMinutes()<10?'0':'') + new Date().getMinutes();
+  // let arranque = `${arranqueH}:${arranqueM}`;
+
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
       <SafeAreaView>
@@ -80,10 +84,10 @@ const CarControl = () => {
               </Text>
             </View>
             <View style={styles.view2}>
-              <Text h5>{cars.date}</Text>
+              <Text h5>{cars.date.split(" ")[1]}</Text>
               <Text h5>{cars.modelo}</Text>
               <Text h5>{cars.marca}</Text>
-              <Text h5>Tiempo: {cars.time}hs</Text>
+              <Text h5>Tiempo: {cars.time/60}hs</Text>
             </View>
           </Card>
         ))}

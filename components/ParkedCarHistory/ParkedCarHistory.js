@@ -46,7 +46,7 @@ const parkedCarHistory = (props) => {
             </Card>
           </View>
 
-          {autos.map((cars) => (
+          {autos.reverse().map((cars) => (
             <Card containerStyle={styles.card}>
               <View style={styles.view}>
                 <Text style={{ fontWeight: "bold" }}>{cars.patente}</Text>

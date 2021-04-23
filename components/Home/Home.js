@@ -77,7 +77,7 @@ export const Home = () => {
               }}
             >
               <Text h4>{`Bienvenido ${adminInfo.name}`}</Text>
-              <Text h4>{`Admin cuadra: ${adminInfo.zone}`}</Text>
+              <Text h4>{`Admin Manzana: ${adminInfo.zone}`}</Text>
             </View>
           </Card>
           <View
