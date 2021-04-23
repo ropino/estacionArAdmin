@@ -57,5 +57,6 @@ export const styles = StyleSheet.create({
   },
   clearButton: {
     color: "black",
+    marginBottom: 65,
   },
 });
