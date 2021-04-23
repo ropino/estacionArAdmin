@@ -7,12 +7,14 @@ import {
   signOutAdmin,
   logOutUser,
   setAdminLogged,
-  setAdminInfo
+  setAdminInfo,
+  goWork
 } from "./adminActions";
 
-const initialState = {
+export const initialState = {
   adminId: '',
   adminInfo: {},
+  isWorking: null,
 };
 
 export const adminReducer = createReducer(initialState, {
@@ -33,5 +35,9 @@ export const adminReducer = createReducer(initialState, {
   },
   [setAdminInfo]:(state,action)=>{
     return {...state, adminInfo: action.payload}
+  },
+  [goWork]:(state,action)=>{
+    console.log(action.payload)
+    return {...state, isWorking: action.payload}
   },
 });
