@@ -17,15 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 const adminProfile = (props) => {
   const navigation = useNavigation();
   const {adminInfo} = useSelector((state) => state.adminReducer);
-  // const [input, setInput] = useState({
-  //   email: "",
-  //   phone: "",
-  //   adress: "",
-  // })
 
-  // const handleChangeText = (name, value) => {
-  //   setInput({ ...input, [name]: value });
-  // };
 
   return (
     <ScrollView>
@@ -37,7 +29,6 @@ const adminProfile = (props) => {
             placeholder={adminInfo ? adminInfo.name : ""}
             inputStyle={styles.colorInput}
             disabled={true}
-            // value={input.name}
           />
           <Input
             label="Apellido"
@@ -45,15 +36,13 @@ const adminProfile = (props) => {
             placeholder={adminInfo ? adminInfo.lastname : ""}
             inputStyle={styles.colorInput}
             disabled={true}
-            // value={input.lastname}
           />
           <Input
             label="DNI"
             name="dni"
             disabled={true}
-            // placeholder={userInfo ? userInfo.name : ""}
+            placeholder={adminInfo ? adminInfo.dni: ""}
             inputStyle={styles.colorInput}
-            // value={input.name}
           />
           <Input
             label="Email"
@@ -87,7 +76,7 @@ const adminProfile = (props) => {
         <View style={styles.fixToText}>
           <Button
             buttonStyle={styles.colores}
-            title="Solicitar actualizacion de datos"
+            title="Solicitar actualización de datos"
             onPress={()=>navigation.navigate("support")}
           ></Button>
           <Button
@@ -107,15 +96,6 @@ const adminProfile = (props) => {
             }}
           ></Button>
         </View>
-
-        {/* <View style={styles.imagen}>
-          <ImageBackground
-          style={styles.stretch}
-          source={{
-            uri: "https://i.postimg.cc/mrWQN3x1/logo-final-8.png",
-          }}
-          />
-        </View> */}
       </SafeAreaView>
     </ScrollView>
   );

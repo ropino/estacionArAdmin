@@ -37,7 +37,6 @@ export const adminReducer = createReducer(initialState, {
     return {...state, adminInfo: action.payload}
   },
   [goWork]:(state,action)=>{
-    console.log(action.payload)
     return {...state, isWorking: action.payload}
   },
 });

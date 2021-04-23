@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { styles } from "./ParkedCarHistoryStyle";
 import { View, SafeAreaView, ScrollView } from "react-native";
-import { Button, Card, Text } from "react-native-elements";
+import { Button, Card, Text, SearchBar } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
 import firebase from "../../back/db/firebase";
 import { useSelector } from "react-redux";
 
+
 const parkedCarHistory = (props) => {
   const navigation = useNavigation();
   const { adminInfo } = useSelector((state) => state.adminReducer);
   const [autos, setAutos] = useState([]);
+  const [patente, setPatente] = useState("");
+
 
   useEffect(() => {
     getParkedCars();
   }, [adminInfo]);
+
+
+  const handleChangeText = (value) => {
+    setPatente(value)
+  };
 
   const getParkedCars = () => {
     return firebase.db
@@ -31,6 +39,13 @@ const parkedCarHistory = (props) => {
   return (
     <ScrollView style={{ backgroundColor: "black", flex: 1 }}>
       <SafeAreaView>
+      <SearchBar
+          placeholder="Buscar patente"
+          onChangeText={(value) => handleChangeText(value)}
+          value={patente.toUpperCase()}
+          containerStyle={styles.searchBar}
+          inputStyle={styles.barra}
+        />
         <View>
           <View
             style={{
@@ -49,7 +64,7 @@ const parkedCarHistory = (props) => {
           {autos.reverse().map((cars) => (
             <Card containerStyle={styles.card}>
               <View style={styles.view}>
-                <Text style={{ fontWeight: "bold" }}>{cars.patente}</Text>
+                <Text style={{ fontWeight: "bold" }}>{cars.patente.toUpperCase()}</Text>
                 <Text>{cars.modelo}</Text>
                 <Text>{`${cars.inicio} a ${cars.final}`}</Text>
               </View>
@@ -61,12 +76,3 @@ const parkedCarHistory = (props) => {
   );
 };
 export default parkedCarHistory;
-
-{
-  /* <View style={styles.view2}>
-  <Text h5>{cars.date}</Text>
-  <Text h5>{cars.modelo}</Text>
-  <Text h5>{cars.marca}</Text>
-  <Text h5>Tiempo: {cars.time}hs</Text>
-</View> */
-}

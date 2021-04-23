@@ -14,13 +14,14 @@ const carReportContainer = () => {
           name="profile"
           component={carReport}
           options={({ navigation }) => ({
-            title: "",
+            title: "Reportar vehículo",
+            headerTitleAlign: "center",
             headerStyle: {
               backgroundColor: "#F9B233",
               elevation: 0,
               shadowColor: "transparent",
             },
-            headerTintColor: "#fff",
+            headerTintColor: "#774D00",
             headerTitleStyle: {
               fontWeight: "bold",
             },
@@ -38,6 +39,20 @@ const carReportContainer = () => {
                 onPress={() => {
                   navigation.toggleDrawer();
                 }}
+              />
+            ),
+            headerRight: () => (
+              <Button
+                type="clear"
+                icon={
+                  <Icon
+                    name="arrow-circle-left"
+                    size={35}
+                    color="white"
+                    style={{ marginRight: 10 }}
+                  />
+                }
+                onPress={() => navigation.goBack()}
               />
             ),
           })}
